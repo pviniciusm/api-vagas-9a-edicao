@@ -6,9 +6,13 @@ export class UsuarioRepository {
     private repository =
         TypeormConnection.connection.getRepository(UsuarioEntity);
 
-    public async getByUsername(username: string): Promise<Usuario | null> {
+    public async getByUsername(
+        username: string,
+        password?: string
+    ): Promise<Usuario | null> {
         const result = await this.repository.findOneBy({
             username,
+            password,
         });
 
         if (!result) {
