@@ -19,7 +19,19 @@ export class UsuarioRepository {
             return null;
         }
 
-        return this.mapEntityToModel(result);
+        return UsuarioRepository.mapEntityToModel(result);
+    }
+
+    public async get(id: string): Promise<Usuario | null> {
+        const result = await this.repository.findOneBy({
+            id,
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return UsuarioRepository.mapEntityToModel(result);
     }
 
     public async create(usuario: Usuario) {
@@ -33,7 +45,7 @@ export class UsuarioRepository {
         });
 
         const result = await this.repository.save(usuarioEntity);
-        return this.mapEntityToModel(result);
+        return UsuarioRepository.mapEntityToModel(result);
     }
 
     public async list(tipo?: TipoUsuario) {
@@ -41,10 +53,10 @@ export class UsuarioRepository {
             tipo,
         });
 
-        return result.map((item) => this.mapEntityToModel(item));
+        return result.map((item) => UsuarioRepository.mapEntityToModel(item));
     }
 
-    private mapEntityToModel(entity: UsuarioEntity): Usuario {
+    public static mapEntityToModel(entity: UsuarioEntity): Usuario {
         return Usuario.create(
             entity.id,
             entity.nome,
