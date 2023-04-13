@@ -11,11 +11,9 @@ interface AplicacaoParams {
 }
 
 export class AplicacaoUsecase {
-    constructor(private usuarioRepository: UsuarioRepository) {}
-
     public async execute(data: AplicacaoParams): Promise<Return> {
-        // const usuarioRepository = new UsuarioRepository();
-        const candidato = await this.usuarioRepository.get(data.idCandidato);
+        const usuarioRepository = new UsuarioRepository();
+        const candidato = await usuarioRepository.get(data.idCandidato);
 
         if (!candidato) {
             return {
