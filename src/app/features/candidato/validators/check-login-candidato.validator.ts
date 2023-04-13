@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { TipoUsuario } from "../../../models/usuario.model";
 import { ApiError } from "../../../shared/errors/api.error";
 
-export const checkLoginRecrutadorValidator = (
+export const checkLoginCandidatoValidator = (
     req: Request,
     res: Response,
     next: NextFunction

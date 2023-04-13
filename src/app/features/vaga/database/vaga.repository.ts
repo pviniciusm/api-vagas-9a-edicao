@@ -25,10 +25,25 @@ export class VagaRepository {
             relations: ["recrutador"],
         });
 
-        return result.map((item) => this.mapEntityToModel(item));
+        return result.map((item) => VagaRepository.mapEntityToModel(item));
     }
 
-    private mapEntityToModel(entity: VagaEntity): Vaga {
+    public async get(id: string) {
+        const result = await this.repository.findOne({
+            where: {
+                id,
+            },
+            relations: ["recrutador"],
+        });
+
+        if (result === null) {
+            return null;
+        }
+
+        return VagaRepository.mapEntityToModel(result);
+    }
+
+    public static mapEntityToModel(entity: VagaEntity): Vaga {
         const recrutador = UsuarioRepository.mapEntityToModel(
             entity.recrutador
         );
