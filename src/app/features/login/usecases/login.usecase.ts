@@ -25,7 +25,7 @@ export class LoginUsecase {
         }
 
         // 2- gerar o token JWT
-        const token = JwtAdapter.createToken(usuario);
+        const token = JwtAdapter.createToken(usuario.toJson());
 
         // 3- retornar o usuario e o token
         return {

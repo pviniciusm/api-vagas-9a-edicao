@@ -42,4 +42,13 @@ export class Usuario {
     public get id() {
         return this._id;
     }
+
+    public toJson() {
+        return {
+            _id: this._id,
+            nome: this.nome,
+            username: this.username,
+            tipo: this.tipo,
+        };
+    }
 }
