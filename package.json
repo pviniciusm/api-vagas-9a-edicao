@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node ./build/index.js",
-        "postinstall": "tsc",
+        "postinstall": "npx tsc",
         "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
         "dev:debug": "ts-node-dev --inspect --respawn --transpile-only ./src/index.ts",
         "typeorm": "typeorm-ts-node-commonjs",
